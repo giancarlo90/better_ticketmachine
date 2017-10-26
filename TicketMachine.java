@@ -99,16 +99,20 @@ public class TicketMachine
         balance = 0;
         return amountToRefund;
     }
-    
+
     /**
      * Metodo para vaciar de monedas la maquina
      */
     public int emptyMachine()
     {
-        int amountToRefund;
-        amountToRefund= balance + total;
-        balance = 0;
-        total = 0;
-        return amountToRefund;
-    }
+        int moneyToRefund = total + balance;
+        if (balance == 0){
+           total = 0;
+        }
+        else {
+            System.out.println ("No se puede devolver el dinero mientra la maquina esta en uso");
+            moneyToRefund = -1;
+        }
+        return moneyToRefund;
+}
 }
