@@ -19,6 +19,8 @@ public class TicketMachine
     private int total;
     // Maquina de Tickets con premio
     private boolean prize;
+    // Numero maximo de billetes
+    private int max;
 
     /**
      * Create a machine that issues tickets of the given price.
@@ -29,6 +31,8 @@ public class TicketMachine
         balance = 0;
         total = 0;
         prize = freeTicketMachine;
+        max = 5 * cost;
+        
     }
     
     /**
@@ -54,12 +58,18 @@ public class TicketMachine
      */
     public void insertMoney(int amount)
     {
+        if (total < max)
+        {
         if(amount > 0) {
             balance = balance + amount;
         }
         else {
             System.out.println("Use a positive amount rather than: " +
                 amount); 
+            }
+        }
+        else {
+            System.out.println("Error, all Tickets have been sold");
         }
     }
 
