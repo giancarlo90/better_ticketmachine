@@ -17,17 +17,20 @@ public class TicketMachine
     private int balance;
     // The total amount of money collected by this machine.
     private int total;
+    // Maquina de Tickets con premio
+    private boolean prize;
 
     /**
      * Create a machine that issues tickets of the given price.
      */
-    public TicketMachine(int cost)
+    public TicketMachine(int cost, boolean freeTicketMachine)
     {
         price = cost;
         balance = 0;
         total = 0;
+        prize = freeTicketMachine;
     }
-
+    
     /**
      * @Return The price of a ticket.
      */
@@ -80,6 +83,14 @@ public class TicketMachine
             total = total + price;
             // Reduce the balance by the prince.
             balance = balance - price;
+            if (prize == true )
+            {
+            System.out.println("##################");
+            System.out.println("# The BlueJ Line");
+            System.out.println("# Free Ticket");
+            System.out.println("##################");
+            System.out.println();
+            }
         }
         else {
             System.out.println("You must insert at least: " +
@@ -87,6 +98,7 @@ public class TicketMachine
 
         }
     }
+    
 
     /**
      * Return the money in the balance.
